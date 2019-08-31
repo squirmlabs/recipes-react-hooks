@@ -22,7 +22,6 @@ export default function Playground() {
       battery.removeEventListener('levelchange', handleChange);
       battery.removeEventListener('chargingchange', handleChange);
     };
-    
   }, []);
 
   return (
