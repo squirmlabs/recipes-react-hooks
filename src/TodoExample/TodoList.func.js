@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import NewTodo from "./NewTodo";
-import TodoItem from "./TodoItem";
-import { Container, List } from "./Styled";
+import React, { useState } from 'react';
+import NewTodo from './NewTodo';
+import TodoItem from './TodoItem';
+import { Container, List } from './Styled';
 
 export default function TodoList() {
-  const [newTodo, updateNewTodo] = useState("");
+  const [newTodo, updateNewTodo] = useState('');
   const [todos, updateTodos] = useState([]);
   const handleNewSubmit = e => {
     e.preventDefault();
@@ -16,7 +16,7 @@ export default function TodoList() {
         completed: false
       }
     ]);
-    updateNewTodo("");
+    updateNewTodo('');
   };
   const handleNewChange = e => updateNewTodo(e.target.value);
   const handleDelete = (id, e) => {

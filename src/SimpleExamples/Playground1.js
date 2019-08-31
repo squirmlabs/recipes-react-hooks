@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 export function Playground1() {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
 
   const [checked, setChecked] = useState(false);
-  
+
   return (
     <section>
       <input type="text" value={text} onChange={e => setText(e.target.value)} />

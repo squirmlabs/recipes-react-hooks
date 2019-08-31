@@ -1,10 +1,10 @@
-import React from "react";
-import styled from '@emotion/styled'
+import React from 'react';
+import styled from '@emotion/styled';
 
-const Wrapper = styled("div")`
+const Wrapper = styled('div')`
   position: relative;
 `;
-const Input = styled("input")`
+const Input = styled('input')`
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -14,14 +14,14 @@ const Input = styled("input")`
   position: absolute;
   width: 1px;
 `;
-const Label = styled("label")`
+const Label = styled('label')`
   display: inline-block;
   padding-left: 1.5em;
-  text-decoration: ${props => (props.completed ? "line-through" : "initial")};
-  color: ${props => (props.completed ? "#ccc" : "white")};
+  text-decoration: ${props => (props.completed ? 'line-through' : 'initial')};
+  color: ${props => (props.completed ? '#ccc' : 'white')};
 
   &:before {
-    content: "";
+    content: '';
     background-color: #fff;
     background-repeat: no-repeat;
     background-position: center;
@@ -37,11 +37,11 @@ const Label = styled("label")`
     cursor: pointer;
   }
 
-  input[type="checkbox"]:focus + &:before {
+  input[type='checkbox']:focus + &:before {
     border-color: #70b77e;
   }
 
-  input[type="checkbox"]:checked + &:before {
+  input[type='checkbox']:checked + &:before {
     background-color: #70b77e; // #f2545b;
     opacity: 1;
     background-image: url('data:image/svg+xml,\

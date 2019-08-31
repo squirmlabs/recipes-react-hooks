@@ -1,10 +1,10 @@
-import React from "react";
-import styled from '@emotion/styled'
+import React from 'react';
+import styled from '@emotion/styled';
 
 const NEW_TODO_MAX_LENGTH = 42;
 const NEW_TODO_WARNING_LENGTH = 25;
 
-const Input = styled("input")`
+const Input = styled('input')`
   border: 2px solid rgba(255, 255, 255, 0.5);
   font-size: 1.75em;
   padding: 0.25em 0.5em;
@@ -19,7 +19,7 @@ const Input = styled("input")`
     border-radius: 0.25em 0.25em 0 0;
   }
 `;
-const Form = styled("form")`
+const Form = styled('form')`
   position: relative;
   display: flex;
 
@@ -36,21 +36,21 @@ const Form = styled("form")`
     text-align: center;
     min-width: 20px;
     color: ${props => {
-      if (props["data-remaining"] === 0) {
-        return "white";
-      } else if (props["data-remaining"] <= NEW_TODO_WARNING_LENGTH) {
-        return "black";
+      if (props['data-remaining'] === 0) {
+        return 'white';
+      } else if (props['data-remaining'] <= NEW_TODO_WARNING_LENGTH) {
+        return 'black';
       } else {
-        return "rgba(255, 255, 255, 0.75)";
+        return 'rgba(255, 255, 255, 0.75)';
       }
     }};
     background-color: ${props => {
-      if (props["data-remaining"] === 0) {
-        return "#F2545B";
-      } else if (props["data-remaining"] <= NEW_TODO_WARNING_LENGTH) {
-        return "#FFFDA1";
+      if (props['data-remaining'] === 0) {
+        return '#F2545B';
+      } else if (props['data-remaining'] <= NEW_TODO_WARNING_LENGTH) {
+        return '#FFFDA1';
       } else {
-        return "rgba(255, 255, 255, 0.25)";
+        return 'rgba(255, 255, 255, 0.25)';
       }
     }};
   }

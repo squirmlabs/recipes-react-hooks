@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import NewTodo from "./NewTodo";
-import TodoItem from "./TodoItem";
-import { Container, List } from "./Styled";
+import React, { Component } from 'react';
+import NewTodo from './NewTodo';
+import TodoItem from './TodoItem';
+import { Container, List } from './Styled';
 
 export default class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       todos: [],
-      newTodo: ""
+      newTodo: ''
     };
     this.handleNewChange = this.handleNewChange.bind(this);
     this.handleNewSubmit = this.handleNewSubmit.bind(this);
@@ -28,7 +28,7 @@ export default class TodoList extends Component {
           ...prevState.todos,
           { id: Date.now(), text: prevState.newTodo, completed: false }
         ],
-        newTodo: ""
+        newTodo: ''
       };
     });
   }
