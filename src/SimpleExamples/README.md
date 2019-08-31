@@ -38,3 +38,14 @@ useEffect(function persistForm() {
 ## Custom hooks
 
 Custom hooks are basically just a special function that starts with `use` and this special type of function can use React hooks without error. 
+
+## UseEffect Hook
+
+```js
+useEffect(effect: React.EffectCallback, inputs?: ReadonlyArray<any>): void
+```
+
+If the second argument to useEffect is provided, effect will only activate if the values in the list change. If provided the useEffect will only run, after renders, where those inputs have changed. Accepts a function that contains imperative, possibly effectful code.
+
+The other option is to provide an array, which will cause the effect to only run on `mount` and `unmount`.
+
