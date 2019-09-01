@@ -49,3 +49,6 @@ If the second argument to useEffect is provided, effect will only activate if th
 
 The other option is to provide an array, which will cause the effect to only run on `mount` and `unmount`.
 
+## UseState
+
+Can also take a function that will be invoked once to get its initial value.
