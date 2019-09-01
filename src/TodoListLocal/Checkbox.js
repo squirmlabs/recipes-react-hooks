@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 const Wrapper = styled('div')`
   position: relative;
 `;
+
 const Input = styled('input')`
   border: 0;
   clip: rect(0 0 0 0);
@@ -14,6 +15,7 @@ const Input = styled('input')`
   position: absolute;
   width: 1px;
 `;
+
 const Label = styled('label')`
   display: inline-block;
   padding-left: 1.5em;

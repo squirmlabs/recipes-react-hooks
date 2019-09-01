@@ -4,49 +4,74 @@ import TodoItem from './TodoItem';
 import { Container, List } from './Styled';
 import About from './About';
 
+const useLocalStorage = (key, defaultValue, callback) => {
+  const initialValue = () => {
+    const valueFromStorage = JSON.parse(
+      window.localStorage.getItem(key) || JSON.stringify(defaultValue)
+    );
+
+    if (callback) {
+      callback(valueFromStorage);
+    }
+
+    return valueFromStorage;
+  };
+
+  const [storage, updateStorage] = useState(initialValue);
+
+  useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(storage));
+  }, [storage]);
+
+  return [storage, updateStorage];
+};
+
+const useDocumentTitle = title => {
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
+};
+
+const useKeyDown = (map, defaultValue) => {
+  let [match, setMatch] = useState(defaultValue);
+
+  useEffect(() => {
+    const handleKey = ({ key }) => {
+      setMatch(prevMatch =>
+        Object.keys(map).some(k => k === key) ? map[key] : prevMatch
+      );
+    };
+
+    document.addEventListener('keydown', handleKey);
+
+    return () => document.removeEventListener('keydown', handleKey);
+  }, []);
+
+  return [match, setMatch];
+};
+
+const incompleteTodoCount = todos =>
+  todos.reduce((memo, todo) => (!todo.completed ? memo + 1 : memo), 0);
+
 export default function TodoList() {
   const [newTodo, updateNewTodo] = useState('');
 
   const todoId = useRef(0);
 
-  const initialTodos = () => {
-    const valueFromStorage = JSON.parse(
-      window.localStorage.getItem('todos') || '[]'
-    );
-
-    todoId.current = valueFromStorage.reduce(
-      (memo, todo) => Math.max(memo, todo.id),
-      0
-    );
-
-    return valueFromStorage;
-  };
-
-  const [todos, updateTodos] = useState(initialTodos);
-
-  useEffect(() => {
-    window.localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
-
-  useEffect(() => {
-    const inCompleteTodos = todos.reduce(
-      (memo, todo) => (!todo.completed ? memo + 1 : memo),
-      0
-    );
-    document.title = inCompleteTodos ? `Todos (${inCompleteTodos})` : 'Todos';
+  const [todos, updateTodos] = useLocalStorage('todos', [], values => {
+    todoId.current = values.reduce((memo, item) => Math.max(memo, item.id), 0);
   });
 
-  let [showAbout, setShowAbout] = useState(false);
+  const inCompleteCount = incompleteTodoCount(todos);
 
-  useEffect(() => {
-    const handleKey = ({ key }) => {
-      setShowAbout(show =>
-        key === '?' ? true : key === 'Escape' ? false : show
-      );
-    };
-    document.addEventListener('keydown', handleKey);
-    return () => document.removeEventListener('keydown', handleKey);
-  }, []);
+  const title = inCompleteCount ? `Todos (${inCompleteCount})` : 'Todos';
+
+  useDocumentTitle(title);
+
+  let [showAbout, setShowAbout] = useKeyDown(
+    { '?': true, Escape: false },
+    false
+  );
 
   const handleNewSubmit = e => {
     e.preventDefault();

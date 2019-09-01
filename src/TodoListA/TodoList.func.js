@@ -5,9 +5,12 @@ import { Container, List } from './Styled';
 
 export default function TodoList() {
   const [newTodo, updateNewTodo] = useState('');
+
   const [todos, updateTodos] = useState([]);
+
   const handleNewSubmit = e => {
     e.preventDefault();
+
     updateTodos(prevTodos => [
       ...prevTodos,
       {
@@ -16,12 +19,16 @@ export default function TodoList() {
         completed: false
       }
     ]);
+
     updateNewTodo('');
   };
+
   const handleNewChange = e => updateNewTodo(e.target.value);
+
   const handleDelete = (id, e) => {
     updateTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
   };
+
   const handleCompletedToggle = (id, e) => {
     updateTodos(prevTodos =>
       prevTodos.map(todo =>
