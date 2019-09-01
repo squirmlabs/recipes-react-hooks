@@ -52,3 +52,8 @@ The other option is to provide an array, which will cause the effect to only run
 ## UseState
 
 Can also take a function that will be invoked once to get its initial value.
+
+
+## UseRef
+
+Refs can actually be used in another way. They weren't only made for dom elements. You can actually use refs to simulate instance variables like you would use in a class. 

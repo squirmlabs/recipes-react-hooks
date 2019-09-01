@@ -1,7 +1,8 @@
 import React from "react";
 // import Playground from "./SimpleExamples/Playground0";
-// import TodoList from "./TodoExample/TodoList.func";
-import TodoList2 from "./TodoExample-2/TodoList.class";
-// import BatteryExample from "./BatteryExample/BatteryPlay.class";
+// import TodoList from "./TodoList/TodoList.func";
+// import TodoListB from "./TodoListB/TodoList.class";
+// import Battery from "./Battery/BatteryPlay.class";
+import Focus from "./Focus/Focus.class";
 
-export default () => <TodoList2 />;
+export default () => <Focus />;
