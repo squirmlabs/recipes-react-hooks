@@ -17,17 +17,21 @@ export default function TodoList() {
     );
     return valueFromStorage;
   };
+
   const [todos, updateTodos] = useState(initialTodos);
   useEffect(() => {
     window.localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
+
   useEffect(() => {
     const inCompleteTodos = todos.reduce(
       (memo, todo) => (!todo.completed ? memo + 1 : memo),
       0
     );
+
     document.title = inCompleteTodos ? `Todos (${inCompleteTodos})` : 'Todos';
   });
+
   let [showAbout, setShowAbout] = useState(false);
   useEffect(() => {
     const handleKey = ({ key }) => {
@@ -38,6 +42,7 @@ export default function TodoList() {
     document.addEventListener('keydown', handleKey);
     return () => document.removeEventListener('keydown', handleKey);
   }, []);
+
   const handleNewSubmit = e => {
     e.preventDefault();
     todoId.current += 1;
@@ -51,10 +56,13 @@ export default function TodoList() {
     ]);
     updateNewTodo('');
   };
+
   const handleNewChange = e => updateNewTodo(e.target.value);
+
   const handleDelete = (id, e) => {
     updateTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
   };
+  
   const handleCompletedToggle = (id, e) => {
     updateTodos(prevTodos =>
       prevTodos.map(todo =>
