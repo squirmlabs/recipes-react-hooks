@@ -26,6 +26,7 @@ const useBattery = () => {
     };
 
   }, []);
+  
   return battery;
 };
 

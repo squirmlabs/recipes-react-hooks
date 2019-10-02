@@ -19,6 +19,7 @@ export default function TodoList() {
   };
 
   const [todos, updateTodos] = useState(initialTodos);
+  
   useEffect(() => {
     window.localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
